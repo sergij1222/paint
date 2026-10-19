@@ -145,6 +145,10 @@ function pointFromEvent(event) {
   return { x: Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width)),
            y: Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height)) };
 }
+
+canvas.addEventListener("touchstart", e => e.preventDefault(), { passive: false });
+canvas.addEventListener("touchmove", e => e.preventDefault(), { passive: false });
+
 canvas.addEventListener("pointerdown", async event => {
   if (!roomId || !currentUser) return;
   event.preventDefault(); drawing = true; canvas.setPointerCapture(event.pointerId);
